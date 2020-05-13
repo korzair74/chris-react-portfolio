@@ -12,14 +12,14 @@ export default class PortfolioConainer extends Component {
     const data = ["Quip", "Eventbrite", "Ministry Safe", "SwingAway"];
 
     return data.map(item => {
-      return <PortfolioItem />;
+      return <PortfolioItem title={item}/>;
     })
   }
 
   render() {
     return (
       <div>
-        <h2>Portfolio items go here...</h2>
+        <h2>Portfolio Items Go Here...</h2>
 
         {this.portfolioItems()}
       </div>
