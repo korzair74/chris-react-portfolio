@@ -12,19 +12,19 @@ export default class NavigationComponent extends Component {
   render() {
     return (
       <div>
-        <NavLink exact to="/">
+        <NavLink exact to="/" activeClassName="nav-link-active">
           Home
         </NavLink>
 
-        <NavLink to="/About-me">
+        <NavLink to="/About-me" activeClassName="nav-link-active">
           About
         </NavLink>
 
-        <NavLink to="/Contact">
+        <NavLink to="/Contact" activeClassName="nav-link-active">
           Contact
         </NavLink>
-        
-        <NavLink to="/Blog">
+
+        <NavLink to="/Blog" activeClassName="nav-link-active">
           Blog
         </NavLink>
         
