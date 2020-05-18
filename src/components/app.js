@@ -12,24 +12,9 @@ import PortfolioDetail from "./portfolio/portfolio-detail";
 import NoMatch from "./pages/no-match";
 
 export default class App extends Component {
-  constructor() {
-    super();
 
-    this.getPortfolioItems = this.getPortfolioItems.bind(this);
-  }
 
-  getPortfolioItems() {
-    axios
-      .get('https://chrisnickel.devcamp.space/portfolio/portfolio_items')
-      .then(response => {
-        console.log("response data", response);
-      })
-      .catch(error => {
-        console.log(error);
-      });
-  }
   render() {
-    this.getPortfolioItems();
     return (
       <div className="app">
         <Router>
