@@ -3,10 +3,12 @@ import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
 import moment from "moment";
 
 
-import PortfolioContainer from "./portfolio/portfolio-container"
-import NavigationContainer from "./Navigation/navigation-container"
-import Home from "./Pages/home"
-import About from "./Pages/about"
+import PortfolioContainer from "./portfolio/portfolio-container";
+import NavigationContainer from "./Navigation/navigation-container";
+import Home from "./Pages/home";
+import About from "./Pages/about";
+import Contact from "./Pages/contact";
+import Blog from "./Pages/blog";
 export default class App extends Component {
   render() {
     return (
@@ -20,6 +22,8 @@ export default class App extends Component {
            <Switch>
              <Route exact path="/" component={Home} />
              <Route path="/About-me" component={About} />
+             <Route path="/Contact" component={Contact} />
+             <Route path="/Blog" component={Blog} />
            </Switch>
           </div>
         </Router>
