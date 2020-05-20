@@ -5,16 +5,16 @@ export default class PortfolioItem extends Component {
 		super(props);
 
 		this.state = {
-			PortfolioItemClass: '',
+			portfolioItemClass: '',
 		};
 	}
 
 	handleMouseEnter() {
-		this.setState({ PortfolioItemClass: 'image-blur' });
+		this.setState({ portfolioItemClass: 'image-blur' });
 	}
 
 	handleMouseLeave() {
-		this.setState({ PortfolioItemClass: '' });
+		this.setState({ portfolioItemClass: '' });
 	}
 	render() {
 		const { id, description, thumb_image_url, logo_url } = this.props.item;
@@ -23,11 +23,11 @@ export default class PortfolioItem extends Component {
 			<div
 				className='portfolio-item-wrapper'
 				onMouseEnter={() => this.handleMouseEnter()}
-				onMouseLeave={() => this.handleMouseEnter()}>
+				onMouseLeave={() => this.handleMouseLeave()}>
 				<div
 					className={
 						'portfolio-img-background ' +
-						this.state.PortfolioItemClass
+						this.state.portfolioItemClass
 					}
 					style={{
 						backgroundImage: 'url(' + thumb_image_url + ')',
