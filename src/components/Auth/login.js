@@ -12,6 +12,7 @@ export default class Login extends Component {
 		this.handleChange = this.handleChange.bind(this);
 		this.handleSubmit = this.handleSubmit.bind(this);
 	}
+
 	handleChange(event) {
 		this.setState({
 			[event.target.name]: event.target.value,
@@ -19,18 +20,20 @@ export default class Login extends Component {
 	}
 
 	handleSubmit(event) {
+		console.log('Handle submit', this.state.email, this.state.password);
 		event.preventDefault();
-		};
 	}
+
 	render() {
 		return (
 			<div>
 				<h1>LOGIN TO ACCESS YOUR DASHBOARD</h1>
+
 				<form onSubmit={this.handleSubmit}>
 					<input
 						type='email'
 						name='email'
-						placeholder='Your Email'
+						placeholder='Your email'
 						value={this.state.email}
 						onChange={this.handleChange}
 					/>
@@ -38,12 +41,15 @@ export default class Login extends Component {
 					<input
 						type='password'
 						name='password'
-						placeholder='Your Password'
+						placeholder='Your password'
 						value={this.state.password}
 						onChange={this.handleChange}
 					/>
+
+					<div>
+						<button type='submit'>Login</button>
+					</div>
 				</form>
-				<div type='submit'>Login</div>
 			</div>
 		);
 	}
