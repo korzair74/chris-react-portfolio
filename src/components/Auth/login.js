@@ -19,9 +19,8 @@ export default class Login extends Component {
 	}
 
 	handleSubmit(event) {
-		this.setState({
-			[event.target.name]: event.target.value,
-		});
+		event.preventDefault();
+		};
 	}
 	render() {
 		return (
