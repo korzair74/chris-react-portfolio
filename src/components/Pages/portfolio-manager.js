@@ -38,7 +38,6 @@ export default class PortfolioManager extends Component {
 				this.setState({
 					portfolioItems: [...response.data.portfolio_items],
 				});
-				console.log(response);
 			})
 			.catch((error) => {
 				console.log('error in getPortfolioItems', error);

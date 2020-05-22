@@ -32,7 +32,6 @@ export default class PortfolioForm extends Component {
 		this.setState({
 			[event.target.name]: event.target.value,
 		});
-		console.log('handle Change', event);
 	}
 	handleSubmit(event) {
 		this.buildForm();
