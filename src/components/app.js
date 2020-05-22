@@ -21,9 +21,7 @@ export default class App extends Component {
 
 		this.handleSuccessfulLogin = this.handleSuccessfulLogin.bind(this);
 		this.handleUnsuccessfulLogin = this.handleUnsuccessfulLogin.bind(this);
-		this.handleSuccessfulLogout = this.handleSuccessfulLogout.bind.bind(
-			this
-		);
+		this.handleSuccessfulLogout = this.handleSuccessfulLogout.bind(this);
 	}
 	handleSuccessfulLogin() {
 		this.setState({
@@ -73,7 +71,7 @@ export default class App extends Component {
 		this.checkLoginStatus();
 	}
 	authorizedPages() {
-		return [<Route key='1' path='/blog' component={Blog} />];
+		return [<Route key='blog' path='/blog' component={Blog} />];
 	}
 
 	render() {
