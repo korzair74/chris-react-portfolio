@@ -17,20 +17,20 @@ export default class PortfolioManager extends Component {
 		);
 	}
 
-	handleSuccessfulFormSubmission(portfolioItems) {
-		//TODO
-		// update portfolioItems state
-		// and add the portfolioItem to the list
+	handleSuccessfulFormSubmission(portfolioItem) {
+		this.setState({
+			portfolioItems: [portfolioItem].concat(this.state.portfolioItems),
+		});
 	}
 
 	handleFormSubmissionError(error) {
-		console.log();
+		console.log('handleFormSubmissionError', error);
 	}
 
 	getPortfolioItems() {
 		axios
 			.get(
-				'https://chrisnickel.devcamp.space/portfolio/portfolio_items',
+				'https://chrisnickel.devcamp.space/portfolio/portfolio_items?order_by=created_at&direction=desc',
 
 				{ withCredentials: true }
 			)
