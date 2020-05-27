@@ -29,11 +29,14 @@ export default class PortfolioForm extends Component {
     this.handleThumbDrop = this.handleThumbDrop.bind(this);
     this.handleBannerDrop = this.handleBannerDrop.bind(this);
     this.handleLogoDrop = this.handleLogoDrop.bind(this);
+    this.deleteImage = this.deleteImage.bind(this);
 
     this.thumbRef = React.createRef();
     this.bannerRef = React.createRef();
     this.logoRef = React.createRef();
   }
+
+  deleteImage(imageType) {}
 
   componentDidUpdate() {
     if (Object.keys(this.props.portfolioToEdit).length > 0) {
@@ -214,6 +217,11 @@ export default class PortfolioForm extends Component {
           {this.state.thumb_image && this.state.editMode ? (
             <div className='portfolio-manager-image-wrapper'>
               <img src={this.state.thumb_image} alt='' />
+              <div className='image-removal-link'>
+                <a onClick={() => this.deleteImage("thumb_image")}>
+                  Remove File
+                </a>
+              </div>
             </div>
           ) : (
             <DropzoneComponent
@@ -227,6 +235,11 @@ export default class PortfolioForm extends Component {
           {this.state.banner_image && this.state.editMode ? (
             <div className='portfolio-manager-image-wrapper'>
               <img src={this.state.banner_image} alt='' />
+              <div className='image-removal-link'>
+                <a onClick={() => this.deleteImage("banner_image")}>
+                  Remove File
+                </a>
+              </div>
             </div>
           ) : (
             <DropzoneComponent
@@ -240,6 +253,9 @@ export default class PortfolioForm extends Component {
           {this.state.logo && this.state.editMode ? (
             <div className='portfolio-manager-image-wrapper'>
               <img src={this.state.logo} alt='' />
+              <div className='image-removal-link'>
+                <a onClick={() => this.deleteImage("logo")}>Remove File</a>
+              </div>
             </div>
           ) : (
             <DropzoneComponent
