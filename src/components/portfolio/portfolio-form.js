@@ -64,9 +64,9 @@ export default class PortfolioForm extends Component {
         editMode: true,
         apiUrl: `https://chrisnickel.devcamp.space/portfolio/portfolio_items/${id}`,
         apiAction: "patch",
-        thumb_image: thumb_image_url || "",
-        banner_image: banner_image_url || "",
-        logo: logo_url || "",
+        thumb_image_url: thumb_image_url || "",
+        banner_image_url: banner_image_url || "",
+        logo_url: logo_url || "",
       });
     }
   }
@@ -213,10 +213,10 @@ export default class PortfolioForm extends Component {
             onChange={this.handleChange}
           />
         </div>
-        <div className='image-uploaders, three-column'>
-          {this.state.thumb_image && this.state.editMode ? (
+        <div className='image-uploaders'>
+          {this.state.thumb_image_url && this.state.editMode ? (
             <div className='portfolio-manager-image-wrapper'>
-              <img src={this.state.thumb_image} alt='' />
+              <img src={this.state.thumb_image_url} alt='' />
               <div className='image-removal-link'>
                 <a onClick={() => this.deleteImage("thumb_image")}>
                   Remove File
@@ -232,9 +232,9 @@ export default class PortfolioForm extends Component {
               <div className='dz-message'>Thumbnail</div>
             </DropzoneComponent>
           )}
-          {this.state.banner_image && this.state.editMode ? (
+          {this.state.banner_image_url && this.state.editMode ? (
             <div className='portfolio-manager-image-wrapper'>
-              <img src={this.state.banner_image} alt='' />
+              <img src={this.state.banner_image_url} alt='' />
               <div className='image-removal-link'>
                 <a onClick={() => this.deleteImage("banner_image")}>
                   Remove File
@@ -250,9 +250,9 @@ export default class PortfolioForm extends Component {
               <div className='dz-message'>Banner</div>
             </DropzoneComponent>
           )}
-          {this.state.logo && this.state.editMode ? (
+          {this.state.logo_url && this.state.editMode ? (
             <div className='portfolio-manager-image-wrapper'>
-              <img src={this.state.logo} alt='' />
+              <img src={this.state.logo_url} alt='' />
               <div className='image-removal-link'>
                 <a onClick={() => this.deleteImage("logo")}>Remove File</a>
               </div>
