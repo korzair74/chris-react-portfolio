@@ -42,7 +42,7 @@ export default class PortfolioForm extends Component {
         `https://api.devcamp.space/portfolio/delete-portfolio-image/${this.state.id}?image_type=${imageType}`,
         { withCredentials: true }
       )
-      .then((response) => {
+      .then(() => {
         this.setState({
           [`${imageType}_url`]: "",
         });
