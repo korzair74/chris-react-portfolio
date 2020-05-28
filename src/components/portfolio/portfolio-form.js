@@ -36,7 +36,21 @@ export default class PortfolioForm extends Component {
     this.logoRef = React.createRef();
   }
 
-  deleteImage(imageType) {}
+  deleteImage(imageType) {
+    axios
+      .delete(
+        `https://api.devcamp.space/portfolio/delete-portfolio-image/${this.state.id}?image_type=${imageType}`,
+        { withCredentials: true }
+      )
+      .then((response) => {
+        this.setState({
+          [`${imageType}_url`]: "",
+        });
+      })
+      .catch((error) => {
+        console.log("error in delete", error);
+      });
+  }
 
   componentDidUpdate() {
     if (Object.keys(this.props.portfolioToEdit).length > 0) {
