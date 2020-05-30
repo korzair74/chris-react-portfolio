@@ -12,7 +12,15 @@ export default class Blog extends Component {
       blogItems: [],
     };
     this.getBlogItems = this.getBlogItems.bind(this);
+    this.activateInfiniteScroll();
   }
+
+  activateInfiniteScroll() {
+    window.onscroll = () => {
+      console.log("onscroll");
+    };
+  }
+
   getBlogItems() {
     axios
       .get("https://chrisnickel.devcamp.space/portfolio/portfolio_blogs", {
