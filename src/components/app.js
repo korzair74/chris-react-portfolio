@@ -6,6 +6,7 @@ import {
   faTrash,
   faEdit,
   faSignOutAlt,
+  faSpinner,
 } from "@fortawesome/free-solid-svg-icons";
 
 import NavigationContainer from "./navigation/navigation-container";
@@ -19,7 +20,7 @@ import PortfolioDetail from "./portfolio/portfolio-detail";
 import Auth from "./Pages/auth";
 import NoMatch from "./pages/no-match";
 
-library.add(faTrash, faEdit, faSignOutAlt);
+library.add(faTrash, faEdit, faSignOutAlt, faSpinner);
 
 export default class App extends Component {
   constructor(props) {
