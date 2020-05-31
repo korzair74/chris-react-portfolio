@@ -51,22 +51,26 @@ export default class BlogForm extends Component {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
-        <input
-          type='text'
-          name='title'
-          placeholder='Blog Title'
-          value={this.state.value}
-          onChange={this.handleChange}
-        />
-        <input
-          type='text'
-          name='blog_status'
-          placeholder='Blog Status'
-          value={this.state.blog_status}
-          onChange={this.handleChange}
-        />
-        <button>Save</button>
+      <form onSubmit={this.handleSubmit} className='blog-form-wrapper'>
+        <div className='two-column'>
+          <input
+            type='text'
+            name='title'
+            placeholder='Blog Title'
+            value={this.state.value}
+            onChange={this.handleChange}
+          />
+          <input
+            type='text'
+            name='blog_status'
+            placeholder='Blog Status'
+            value={this.state.blog_status}
+            onChange={this.handleChange}
+          />
+        </div>
+        <div className='one-column'>
+          <button className='btn'>Save</button>
+        </div>
       </form>
     );
   }
