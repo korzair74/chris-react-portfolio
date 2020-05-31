@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import ReactModal from "react-modal";
 
+import BlogForm from "../blog/blog-form";
+
 ReactModal.setAppElement(".app-wrapper");
 export default class BlogModal extends Component {
   constructor(props) {
@@ -28,7 +30,7 @@ export default class BlogModal extends Component {
           this.props.handleModalClose();
         }}
         isOpen={this.props.modalIsOpen}>
-        <h1>Im in a modal</h1>
+        <BlogForm />
       </ReactModal>
     );
   }
