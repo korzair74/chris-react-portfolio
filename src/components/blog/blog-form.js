@@ -58,6 +58,13 @@ export default class BlogForm extends Component {
     formData.append("portfolio_blog[blog_status]", this.state.blog_status);
     formData.append("portfolio_blog[content]", this.state.content);
 
+    if (this.state.featured_image) {
+      formData.append(
+        "portfolio_blog[featured_image]",
+        this.state.featured_image
+      );
+    }
+
     return formData;
   }
 
@@ -74,10 +81,7 @@ export default class BlogForm extends Component {
           blog_status: "",
           content: "",
         });
-
-        this.props.handleSuccessfullFormSubmission(
-          response.data.portfolio_blog
-        );
+        this.props.handleSuccesfulFormSubmission(response.data.portfolio_blog);
       })
       .catch((error) => {
         console.log("handleSubmit for blog error", error);
