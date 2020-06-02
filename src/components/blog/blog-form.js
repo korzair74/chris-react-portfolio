@@ -14,7 +14,7 @@ export default class BlogForm extends Component {
       content: "",
       featured_image: "",
     };
-
+    this.featuredImageRef = React.createRef();
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleRichTextEditorChange = this.handleRichTextEditorChange.bind(
@@ -76,6 +76,10 @@ export default class BlogForm extends Component {
         { withCredentials: true }
       )
       .then((response) => {
+        if (this.state.featured_image) {
+          this.featuredImageRef.current.dropzone.removeAllFiles();
+        }
+
         this.setState({
           title: "",
           blog_status: "",
@@ -125,6 +129,7 @@ export default class BlogForm extends Component {
 
         <div className='image-uploaders'>
           <DropzoneComponent
+            ref={this.featuredImageRef}
             config={this.componentConfig()}
             djsConfig={this.djsConfig()}
             eventHandlers={this.handleFeaturedImageDrop()}>
