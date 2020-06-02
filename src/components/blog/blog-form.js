@@ -14,9 +14,10 @@ export default class BlogForm extends Component {
       blog_status: "",
       content: "",
       featured_image: "",
+      apiUrl: "https://chrisnickel.devcamp.space/portfolio/portfolio_blogs",
+      apiAction: "post",
     };
-    this.deleteImage = this.deleteImage.bind(this);
-    this.featuredImageRef = React.createRef();
+
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleRichTextEditorChange = this.handleRichTextEditorChange.bind(
@@ -26,6 +27,8 @@ export default class BlogForm extends Component {
     this.componentConfig = this.componentConfig.bind(this);
     this.djsConfig = this.djsConfig.bind(this);
     this.handleFeaturedImageDrop = this.handleFeaturedImageDrop.bind(this);
+    this.deleteImage = this.deleteImage.bind(this);
+    this.featuredImageRef = React.createRef();
   }
 
   deleteImage(imageType) {
@@ -38,7 +41,7 @@ export default class BlogForm extends Component {
         this.props.handleFeaturedImageDelete();
       })
       .catch((error) => {
-        console.log("error in delete", error);
+        console.log("deleteImage error", error);
       });
   }
 
@@ -48,6 +51,9 @@ export default class BlogForm extends Component {
         id: this.props.blog.id,
         title: this.props.blog.title,
         blog_status: this.props.blog.blog_status,
+        content: this.props.blog.content,
+        apiUrl: `https://chrisnickel.devcamp.space/portfolio/portfolio_blogs/${this.props.blog.id}`,
+        apiAction: "patch",
       });
     }
   }
@@ -95,12 +101,12 @@ export default class BlogForm extends Component {
   }
 
   handleSubmit(event) {
-    axios
-      .post(
-        "https://chrisnickel.devcamp.space/portfolio/portfolio_blogs",
-        this.buildForm(),
-        { withCredentials: true }
-      )
+    axios({
+      method: this.state.apiAction,
+      url: this.state.apiUrl,
+      data: this.buildForm(),
+      withCredentials: true,
+    })
       .then((response) => {
         if (this.state.featured_image) {
           this.featuredImageRef.current.dropzone.removeAllFiles();
@@ -110,8 +116,17 @@ export default class BlogForm extends Component {
           title: "",
           blog_status: "",
           content: "",
+          featured_image: "",
         });
-        this.props.handleSuccesfulFormSubmission(response.data.portfolio_blog);
+
+        if (this.props.editMode) {
+          // Update blog detail
+          this.props.handleUpdateFormSubmission(response.data.portfolio_blog);
+        } else {
+          this.props.handleSuccessfullFormSubmission(
+            response.data.portfolio_blog
+          );
+        }
       })
       .catch((error) => {
         console.log("handleSubmit for blog error", error);

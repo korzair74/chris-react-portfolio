@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import axios from "axios";
 import ReactHtmlParser from "react-html-parser";
-import BlogFeaturedImage from "../blog/blog-featured-image";
 
-import BlogForm from "..//blog/blog-form";
+import BlogForm from "../blog/blog-form";
+import BlogFeaturedImage from "../blog/blog-featured-image";
 
 export default class BlogDetail extends Component {
   constructor(props) {
@@ -14,8 +14,19 @@ export default class BlogDetail extends Component {
       blogItem: {},
       editMode: false,
     };
+
     this.handleEditClick = this.handleEditClick.bind(this);
     this.handleFeaturedImageDelete = this.handleFeaturedImageDelete.bind(this);
+    this.handleUpdateFormSubmission = this.handleUpdateFormSubmission.bind(
+      this
+    );
+  }
+
+  handleUpdateFormSubmission(blog) {
+    this.setState({
+      blogItem: blog,
+      editMode: false,
+    });
   }
 
   handleFeaturedImageDelete() {
@@ -28,15 +39,13 @@ export default class BlogDetail extends Component {
 
   handleEditClick() {
     console.log("handle edit clicked");
-    this.setState({
-      editMode: true,
-    });
+    this.setState({ editMode: true });
   }
 
   getBlogItem() {
     axios
       .get(
-        `https://chrisnickel.devcamp.space/portfolio/portfolio_blogs/${this.state.currentId}`
+        `https://jordan.devcamp.space/portfolio/portfolio_blogs/${this.state.currentId}`
       )
       .then((response) => {
         this.setState({
@@ -65,6 +74,7 @@ export default class BlogDetail extends Component {
         return (
           <BlogForm
             handleFeaturedImageDelete={this.handleFeaturedImageDelete}
+            handleUpdateFormSubmission={this.handleUpdateFormSubmission}
             editMode={this.state.editMode}
             blog={this.state.blogItem}
           />
@@ -73,7 +83,9 @@ export default class BlogDetail extends Component {
         return (
           <div className='content-container'>
             <h1 onClick={this.handleEditClick}>{title}</h1>
+
             <BlogFeaturedImage img={featured_image_url} />
+
             <div className='content'>{ReactHtmlParser(content)}</div>
           </div>
         );
