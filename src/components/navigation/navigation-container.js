@@ -1,8 +1,8 @@
-import React from "react";
-import { withRouter } from "react-router";
-import { NavLink } from "react-router-dom";
-import axios from "axios";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import React from "./node_modules/react";
+import { withRouter } from "./node_modules/react-router";
+import { NavLink } from "./node_modules/react-router-dom";
+import axios from "./node_modules/axios";
+import { FontAwesomeIcon } from "./node_modules/@fortawesome/react-fontawesome";
 
 const NavigationComponent = (props) => {
   const dynamicLink = (route, linkText) => {
