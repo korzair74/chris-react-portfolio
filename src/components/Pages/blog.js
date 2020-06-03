@@ -117,7 +117,9 @@ export default class Blog extends Component {
         return (
           <div key={blogItem.id} className='admin-blog-wrapper'>
             <BlogItem blogItem={blogItem} />
-            <a onClick={() => this.handleDeleteClick(blogItem)}>Delete</a>
+            <a onClick={() => this.handleDeleteClick(blogItem)}>
+              <FontAwesomeIcon icon='trash' />
+            </a>
           </div>
         );
       } else {
