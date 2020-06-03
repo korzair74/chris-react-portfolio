@@ -1,6 +1,6 @@
-import React, { Component } from "./node_modules/react";
-import axios from "./node_modules/axios";
-import ReactHtmlParser from "./node_modules/react-html-parser";
+import React, { Component } from "react";
+import axios from "axios";
+import ReactHtmlParser from "react-html-parser";
 
 import BlogForm from "../blog/blog-form";
 import BlogFeaturedImage from "../blog/blog-featured-image";
