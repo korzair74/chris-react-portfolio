@@ -23,6 +23,7 @@ export default class PortfolioContainer extends Component {
       this.getPortfolioItems(filter);
     }
   }
+
   getPortfolioItems(filter = null) {
     axios
       .get("https://chrisnickel.devcamp.space/portfolio/portfolio_items")
@@ -43,11 +44,13 @@ export default class PortfolioContainer extends Component {
         console.log(error);
       });
   }
+
   portfolioItems() {
     return this.state.data.map((item) => {
       return <PortfolioItem key={item.id} item={item} />;
     });
   }
+
   componentDidMount() {
     this.getPortfolioItems();
   }
@@ -56,6 +59,7 @@ export default class PortfolioContainer extends Component {
     if (this.state.isLoading) {
       return <div>Loading...</div>;
     }
+
     return (
       <div className='homepage-wrapper'>
         <div className='filter-links'>
