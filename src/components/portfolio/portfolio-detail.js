@@ -60,7 +60,9 @@ export default class PortfolioDetail extends Component {
         </div>
 
         <div className='bottom-content-wrapper'>
-          <a className='site-link' target='_blank' href={url}></a>
+          <a className='site-link' target='_blank' href={url}>
+            Visit {name}
+          </a>
         </div>
       </div>
     );
